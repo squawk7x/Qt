@@ -24,6 +24,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
 		lights.h lights.cpp
 		patternMaker.h patternMaker.cpp
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Watch APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

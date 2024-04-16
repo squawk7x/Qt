@@ -4,7 +4,7 @@ Watch::Watch(QWidget* parent, int base)
     : QWidget(parent)
     , m_base(base)
 {
-    setAttribute(Qt::WA_TranslucentBackground);
+    // setAttribute(Qt::WA_TranslucentBackground);
 
     QVBoxLayout* lines = new QVBoxLayout(this);
 
