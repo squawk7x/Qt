@@ -9,6 +9,8 @@
 #include "lights.h"
 #include "patternMaker.h"
 
+constexpr int BASE = 5;
+
 class Watch : public QWidget
 {
     Q_OBJECT
@@ -21,15 +23,15 @@ private slots:
     void updateIndicator();
 
 private:
-    int m_base;
+    const int m_base;
 
     RoundLight* roundLight;
-    Light* Hu[4];
-    Light* Hl[4];
-    Light* Mu[11];
-    Light* Ml[4];
-    Light* Su[11];
-    Light* Sl[4];
+    Light* Hu[BASE - 1];
+    Light* Hl[BASE - 1];
+    Light* Mu[(60 / BASE) - 1];
+    Light* Ml[BASE - 1];
+    Light* Su[(60 / BASE) - 1];
+    Light* Sl[BASE - 1];
 
     PatternMaker* patternMaker;
 };

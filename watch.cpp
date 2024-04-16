@@ -20,7 +20,7 @@ Watch::Watch(QWidget* parent, int base)
     lines->addLayout(buttonLayout); // Add the button layout to the main layout
 
     // Initialize Light arrays
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < m_base - 1; i++) {
         Hu[i] = new Light();
         Hu[i]->setWidth(Light::Width::Large);
         Hu[i]->setColor(Light::Color::Dark_Red);
@@ -36,7 +36,7 @@ Watch::Watch(QWidget* parent, int base)
         Sl[i]->setWidth(Light::Width::Large);
     }
 
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 60 / m_base - 1; i++) {
         Mu[i] = new Light();
         Mu[i]->setWidth(Light::Width::Small);
         (i % 3 == 0) ? Mu[i]->setColor(Light::Dark_Red) : Mu[i]->setColor(Light::Dark_Yellow);
@@ -54,14 +54,14 @@ Watch::Watch(QWidget* parent, int base)
     QHBoxLayout* line_Su = new QHBoxLayout;
     QHBoxLayout* line_Sl = new QHBoxLayout;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < m_base - 1; i++) {
         line_Hu->addWidget(Hu[i]);
         line_Hl->addWidget(Hl[i]);
         line_Ml->addWidget(Ml[i]);
         line_Sl->addWidget(Sl[i]);
     }
 
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 60 / m_base - 1; i++) {
         line_Mu->addWidget(Mu[i]);
         line_Su->addWidget(Su[i]);
     }
@@ -101,13 +101,13 @@ void Watch::updateIndicator()
     }
     isDarkYellow = !isDarkYellow;
 
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 0; i < m_base - 1; ++i) {
         Hu[i]->setColor((patternMaker->m_Hu[i] == 1) ? Light::Bright_Red : Light::Dark_Red);
         Hl[i]->setColor((patternMaker->m_Hl[i] == 1) ? Light::Bright_Red : Light::Dark_Red);
         Ml[i]->setColor((patternMaker->m_Ml[i] == 1) ? Light::Bright_Yellow : Light::Dark_Yellow);
         Sl[i]->setColor((patternMaker->m_Sl[i] == 1) ? Light::Bright_Yellow : Light::Dark_Yellow);
     }
-    for (int i = 0; i < 11; ++i) {
+    for (int i = 0; i < 60 / m_base - 1; ++i) {
         Mu[i]->setColor((patternMaker->m_Mu[i] == 1)
                             ? (((i + 1) % 3 == 0) ? Light::Bright_Red : Light::Bright_Yellow)
                             : (((i + 1) % 3 == 0) ? Light::Dark_Red : Light::Dark_Yellow));

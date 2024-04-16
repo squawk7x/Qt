@@ -8,8 +8,8 @@ PatternMaker::PatternMaker(int base)
     m_Hl.resize(m_base - 1);
     m_Mu.resize(60 / m_base - 1);
     m_Ml.resize(m_base - 1);
-    m_Su.resize(11);
-    m_Sl.resize(60 / m_base - 1);
+    m_Su.resize(60 / m_base - 1);
+    m_Sl.resize(m_base);
 }
 
 void PatternMaker::makePatterns()
@@ -40,7 +40,7 @@ void PatternMaker::makePatterns()
         m_Ml.push_back(Ml > k); // e.g. 1 1 1 0
         m_Sl.push_back(Sl > k); // e.g. 1 1 0 0
     }
-    for (int k = 0; k < (60 / m_base) - 1; k++) {
+    for (int k = 0; k < 60 / m_base - 1; k++) {
         m_Mu.push_back(Mu > k); // e.g. 1 1 1 1 1 1 0 0 0 0 0
         m_Su.push_back(Su > k); // e.g. 1 1 0 0 0 0 0 0 0 0 0
     }
