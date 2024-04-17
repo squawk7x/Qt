@@ -1,4 +1,4 @@
-A fancy digital Watch - a simulation of the famous 'Berlin-Uhr.
+A fancy digital Watch - a simulation of the famous 'Berlin-Uhr'.
 
 Simply start the application with the default base = 5: 
 
