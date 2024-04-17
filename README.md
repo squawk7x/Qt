@@ -1,6 +1,6 @@
-A fancy digital Watch - a simulation of the famous 'Berlin-Uhr
+A fancy digital Watch - a simulation of the famous 'Berlin-Uhr.
 
-Simply start the application with default base = 5: 
+Simply start the application with the default base = 5: 
 
 ./Watch
 ![watch_base_5](https://github.com/squawk7x/Qt/assets/76264626/d771153a-af6f-4352-93d8-b593c4e8ca23)
