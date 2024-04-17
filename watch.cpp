@@ -4,8 +4,6 @@ Watch::Watch(QWidget* parent, int base)
     : QWidget(parent)
     , m_base(base)
 {
-    // setAttribute(Qt::WA_TranslucentBackground);
-
     QVBoxLayout* lines = new QVBoxLayout(this);
 
     roundLight = new RoundLight(this, 140);
@@ -19,12 +17,21 @@ Watch::Watch(QWidget* parent, int base)
     buttonLayout->addStretch();     // Add stretch to center the button horizontally
     lines->addLayout(buttonLayout); // Add the button layout to the main layout
 
-    // Initialize Light arrays
-    for (int i = 0; i < m_base - 1; i++) {
+    // Initialize Light vectors
+    Hu.resize((24 - 1) / m_base);
+    Hl.resize(m_base - 1);
+    Mu.resize(60 / m_base - 1);
+    Ml.resize(m_base - 1);
+    Su.resize(60 / m_base - 1);
+    Sl.resize(m_base - 1);
+
+    for (int i = 0; i < (24 - 1) / m_base; i++) {
         Hu[i] = new Light();
         Hu[i]->setWidth(Light::Width::Large);
         Hu[i]->setColor(Light::Color::Dark_Red);
+    }
 
+    for (int i = 0; i < m_base - 1; i++) {
         Hl[i] = new Light();
         Hl[i]->setWidth(Light::Width::Large);
         Hl[i]->setColor(Light::Color::Dark_Red);
@@ -54,8 +61,11 @@ Watch::Watch(QWidget* parent, int base)
     QHBoxLayout* line_Su = new QHBoxLayout;
     QHBoxLayout* line_Sl = new QHBoxLayout;
 
-    for (int i = 0; i < m_base - 1; i++) {
+    for (int i = 0; i < (24 - 1) / m_base; i++) {
         line_Hu->addWidget(Hu[i]);
+    }
+
+    for (int i = 0; i < m_base - 1; i++) {
         line_Hl->addWidget(Hl[i]);
         line_Ml->addWidget(Ml[i]);
         line_Sl->addWidget(Sl[i]);
@@ -101,12 +111,16 @@ void Watch::updateIndicator()
     }
     isDarkYellow = !isDarkYellow;
 
-    for (int i = 0; i < m_base - 1; ++i) {
+    for (int i = 0; i < (24 - 1) / m_base; ++i) {
         Hu[i]->setColor((patternMaker->m_Hu[i] == 1) ? Light::Bright_Red : Light::Dark_Red);
+    }
+
+    for (int i = 0; i < m_base - 1; ++i) {
         Hl[i]->setColor((patternMaker->m_Hl[i] == 1) ? Light::Bright_Red : Light::Dark_Red);
         Ml[i]->setColor((patternMaker->m_Ml[i] == 1) ? Light::Bright_Yellow : Light::Dark_Yellow);
         Sl[i]->setColor((patternMaker->m_Sl[i] == 1) ? Light::Bright_Yellow : Light::Dark_Yellow);
     }
+
     for (int i = 0; i < 60 / m_base - 1; ++i) {
         Mu[i]->setColor((patternMaker->m_Mu[i] == 1)
                             ? (((i + 1) % 3 == 0) ? Light::Bright_Red : Light::Bright_Yellow)

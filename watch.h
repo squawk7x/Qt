@@ -8,8 +8,7 @@
 #include <QWidget>
 #include "lights.h"
 #include "patternMaker.h"
-
-constexpr int BASE = 5;
+#include <vector>
 
 class Watch : public QWidget
 {
@@ -26,12 +25,12 @@ private:
     const int m_base;
 
     RoundLight* roundLight;
-    Light* Hu[BASE - 1];
-    Light* Hl[BASE - 1];
-    Light* Mu[(60 / BASE) - 1];
-    Light* Ml[BASE - 1];
-    Light* Su[(60 / BASE) - 1];
-    Light* Sl[BASE - 1];
+    std::vector<Light*> Hu;
+    std::vector<Light*> Hl;
+    std::vector<Light*> Mu;
+    std::vector<Light*> Ml;
+    std::vector<Light*> Su;
+    std::vector<Light*> Sl;
 
     PatternMaker* patternMaker;
 };

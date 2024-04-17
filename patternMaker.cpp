@@ -3,13 +3,13 @@
 
 PatternMaker::PatternMaker(int base)
 {
-    m_base = base;
-    m_Hu.resize(m_base - 1);
-    m_Hl.resize(m_base - 1);
-    m_Mu.resize(60 / m_base - 1);
-    m_Ml.resize(m_base - 1);
-    m_Su.resize(60 / m_base - 1);
-    m_Sl.resize(m_base);
+    m_base = base;                  // base       10  5
+    m_Hu.resize((24 - 1) / m_base); // lights      2  4
+    m_Hl.resize(m_base - 1);        //             9  4
+    m_Mu.resize(60 / m_base - 1);   //             5 11
+    m_Ml.resize(m_base - 1);        //             9  4
+    m_Su.resize(60 / m_base - 1);   //             5 11
+    m_Sl.resize(m_base - 1);        //             9  4
 }
 
 void PatternMaker::makePatterns()
@@ -34,8 +34,11 @@ void PatternMaker::makePatterns()
     m_Sl.clear();
 
     // Populate vectors based on current time
-    for (int k = 0; k < m_base - 1; k++) {
+    for (int k = 0; k < (24 - 1) / m_base - 1; k++) {
         m_Hu.push_back(Hu > k); // e.g. 1 0 0 0
+    }
+
+    for (int k = 0; k < m_base - 1; k++) {
         m_Hl.push_back(Hl > k); // e.g. 1 1 0 0
         m_Ml.push_back(Ml > k); // e.g. 1 1 1 0
         m_Sl.push_back(Sl > k); // e.g. 1 1 0 0
