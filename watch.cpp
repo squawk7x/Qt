@@ -28,13 +28,11 @@ Watch::Watch(QWidget* parent, int base)
     for (int i = 0; i < (24 - 1) / m_base; i++) {
         Hu[i] = new Light();
         Hu[i]->setWidth(Light::Width::Large);
-        // Hu[i]->setColor(Light::Color::Dark_Red);
     }
 
     for (int i = 0; i < m_base - 1; i++) {
         Hl[i] = new Light();
         Hl[i]->setWidth(Light::Width::Large);
-        // Hl[i]->setColor(Light::Color::Dark_Red);
 
         Ml[i] = new Light();
         Ml[i]->setWidth(Light::Width::Large);
@@ -46,11 +44,9 @@ Watch::Watch(QWidget* parent, int base)
     for (int i = 0; i < 60 / m_base - 1; i++) {
         Mu[i] = new Light();
         Mu[i]->setWidth(Light::Width::Small);
-        // (i % 3 == 0) ? Mu[i]->setColor(Light::Dark_Red) : Mu[i]->setColor(Light::Dark_Yellow);
 
         Su[i] = new Light();
         Su[i]->setWidth(Light::Width::Small);
-        // (i % 3 == 0) ? Su[i]->setColor(Light::Dark_Red) : Su[i]->setColor(Light::Dark_Yellow);
     }
 
     // Add lights to layouts
@@ -122,22 +118,12 @@ void Watch::updateIndicator()
     }
 
     for (int i = 0; i < 60 / m_base - 1; ++i) {
-        Mu[i]->setColor(
-            (patternMaker->m_Mu[i] == 1)
-                ? (((i + 1) * m_base == 15 || (i + 1) * m_base == 30 || (i + 1) * m_base == 45)
-                       ? Light::Bright_Red
-                       : Light::Bright_Yellow)
-                : (((i + 1) * m_base == 15 || (i + 1) * m_base == 30 || (i + 1) * m_base == 45)
-                       ? Light::Dark_Red
-                       : Light::Dark_Yellow));
+        Mu[i]->setColor((patternMaker->m_Mu[i] == 1)
+                            ? (((i + 1) * m_base % 15) ? Light::Bright_Yellow : Light::Bright_Red)
+                            : (((i + 1) * m_base % 15) ? Light::Dark_Yellow : Light::Dark_Red));
 
-        Su[i]->setColor(
-            (patternMaker->m_Su[i] == 1)
-                ? (((i + 1) * m_base == 15 || (i + 1) * m_base == 30 || (i + 1) * m_base == 45)
-                       ? Light::Bright_Red
-                       : Light::Bright_Yellow)
-                : (((i + 1) * m_base == 15 || (i + 1) * m_base == 30 || (i + 1) * m_base == 45)
-                       ? Light::Dark_Red
-                       : Light::Dark_Yellow));
+        Su[i]->setColor((patternMaker->m_Su[i] == 1)
+                            ? (((i + 1) * m_base % 15) ? Light::Bright_Yellow : Light::Bright_Red)
+                            : (((i + 1) * m_base % 15) ? Light::Dark_Yellow : Light::Dark_Red));
     }
 }
