@@ -28,13 +28,13 @@ Watch::Watch(QWidget* parent, int base)
     for (int i = 0; i < (24 - 1) / m_base; i++) {
         Hu[i] = new Light();
         Hu[i]->setWidth(Light::Width::Large);
-        Hu[i]->setColor(Light::Color::Dark_Red);
+        // Hu[i]->setColor(Light::Color::Dark_Red);
     }
 
     for (int i = 0; i < m_base - 1; i++) {
         Hl[i] = new Light();
         Hl[i]->setWidth(Light::Width::Large);
-        Hl[i]->setColor(Light::Color::Dark_Red);
+        // Hl[i]->setColor(Light::Color::Dark_Red);
 
         Ml[i] = new Light();
         Ml[i]->setWidth(Light::Width::Large);

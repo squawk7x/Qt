@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     parser.addOption({{"b", "base"}, "Base value for the watch", "value"});
     parser.process(a);
 
-    std::unordered_set<int> validValues = {2, 3, 4, 5, 6, 8, 10, 12};
+    std::unordered_set<int> validValues = {2, 3, 4, 5, 6, 10, 12};
 
     int base = 5; // Default base value
     if (parser.isSet("b")) {
