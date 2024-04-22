@@ -18,6 +18,13 @@ public:
     Watch(QWidget* parent = nullptr, int base = 5);
     ~Watch();
 
+    std::vector<Light*> Hu;
+    std::vector<Light*> Hl;
+    std::vector<Light*> Mu;
+    std::vector<Light*> Ml;
+    std::vector<Light*> Su;
+    std::vector<Light*> Sl;
+
 private slots:
     void updateIndicator();
 
@@ -25,12 +32,6 @@ private:
     const int m_base;
 
     RoundLight* roundLight;
-    std::vector<Light*> Hu;
-    std::vector<Light*> Hl;
-    std::vector<Light*> Mu;
-    std::vector<Light*> Ml;
-    std::vector<Light*> Su;
-    std::vector<Light*> Sl;
 
     PatternMaker* patternMaker;
 };
