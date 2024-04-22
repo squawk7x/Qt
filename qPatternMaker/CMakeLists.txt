@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(gtestPatternSize LANGUAGES CXX)
+project(qtestPatternSize LANGUAGES CXX)
 
 enable_testing()
 

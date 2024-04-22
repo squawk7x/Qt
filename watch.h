@@ -34,6 +34,8 @@ private:
     RoundLight* roundLight;
 
     PatternMaker* patternMaker;
+
+    void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // WATCH_H

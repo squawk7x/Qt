@@ -1,9 +1,12 @@
 #include "watch.h"
+#include <QKeyEvent>
 
 Watch::Watch(QWidget* parent, int base)
     : QWidget(parent)
     , m_base(base)
 {
+    setAttribute(Qt::WA_TranslucentBackground);
+
     QVBoxLayout* lines = new QVBoxLayout(this);
 
     roundLight = new RoundLight(this, 140);
@@ -125,5 +128,26 @@ void Watch::updateIndicator()
         Su[i]->setColor((patternMaker->m_Su[i] == 1)
                             ? (((i + 1) * m_base % 15) ? Light::Bright_Yellow : Light::Bright_Red)
                             : (((i + 1) * m_base % 15) ? Light::Dark_Yellow : Light::Dark_Red));
+    }
+}
+
+void Watch::keyPressEvent(QKeyEvent* event)
+{
+    if (event->key() == Qt::Key_T) {
+        // Toggle the translucency on 'T' key press
+        bool isTransparent = this->testAttribute(Qt::WA_TranslucentBackground);
+        this->setAttribute(Qt::WA_TranslucentBackground, !isTransparent);
+
+        if (isTransparent) {
+            this->setStyleSheet(
+                "background-color: rgba(255, 255, 255, 255);"); // Opaque white background
+        } else {
+            this->setStyleSheet(
+                "background-color: rgba(255, 255, 255, 0);"); // Transparent background
+        }
+
+        this->update(); // Ensure the window updates its appearance
+    } else {
+        // QMainWindow::keyPressEvent(event); // Call base class handler
     }
 }
