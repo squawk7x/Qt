@@ -1,17 +1,16 @@
 #ifndef WATCH_H
 #define WATCH_H
 
+#include "lights.h"
+#include "patternMaker.h"
 #include <QApplication>
 #include <QHBoxLayout>
 #include <QTimer>
 #include <QVBoxLayout>
 #include <QWidget>
-#include "lights.h"
-#include "patternMaker.h"
 #include <vector>
 
-class Watch : public QWidget
-{
+class Watch : public QWidget {
     Q_OBJECT
 
 public:

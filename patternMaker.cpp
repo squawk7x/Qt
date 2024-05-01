@@ -1,4 +1,5 @@
 #include "patternMaker.h"
+#include <QDebug>
 #include <chrono>
 
 PatternMaker::PatternMaker(int base)

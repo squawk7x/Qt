@@ -1,11 +1,10 @@
+#include "watch.h"
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDebug>
-#include "watch.h"
 #include <unordered_set>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
 
     QCommandLineParser parser;

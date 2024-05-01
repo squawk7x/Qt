@@ -1,10 +1,7 @@
 #include "watch.h"
 #include <QKeyEvent>
 
-Watch::Watch(QWidget* parent, int base)
-    : QWidget(parent)
-    , m_base(base)
-{
+Watch::Watch(QWidget* parent, int base) : QWidget(parent), m_base(base) {
     setAttribute(Qt::WA_TranslucentBackground);
 
     QVBoxLayout* lines = new QVBoxLayout(this);
@@ -87,16 +84,13 @@ Watch::Watch(QWidget* parent, int base)
     connect(timer, &QTimer::timeout, this, &Watch::updateIndicator);
     timer->start(1000); // Update every second
 }
-
-Watch::~Watch()
-{
+Watch::~Watch() {
     delete patternMaker;
     delete roundLight;
     // Delete other dynamically allocated widgets (Hu, Hl, Mu, Ml, Su, Sl)
 }
 
-void Watch::updateIndicator()
-{
+void Watch::updateIndicator() {
     patternMaker->makePatterns();
 
     static bool isDarkYellow = true; // Variable to toggle color state
@@ -131,8 +125,7 @@ void Watch::updateIndicator()
     }
 }
 
-void Watch::keyPressEvent(QKeyEvent* event)
-{
+void Watch::keyPressEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_T) {
         // Toggle the translucency on 'T' key press
         bool isTransparent = this->testAttribute(Qt::WA_TranslucentBackground);
